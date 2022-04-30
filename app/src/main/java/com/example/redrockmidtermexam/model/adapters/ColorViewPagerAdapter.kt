@@ -18,7 +18,7 @@ import com.example.redrockmidtermexam.model.response.ColorListResponse
  */
 class ColorViewPagerAdapter(
     private val count: Int,
-    private val data: ArrayList<List<ColorListResponse.Data.Color>>
+    private val data: ArrayList<List<Color>>
 ) :
     RecyclerView.Adapter<ColorViewPagerAdapter.InnerHolder>() {
     lateinit var parent: ViewGroup

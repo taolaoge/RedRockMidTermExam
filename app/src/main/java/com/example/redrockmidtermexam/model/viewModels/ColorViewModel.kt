@@ -1,6 +1,8 @@
 package com.example.redrockmidtermexam.model.viewModels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.ColorListResponse
 import com.example.redrockmidtermexam.model.response.ColorPageResponse
@@ -13,7 +15,7 @@ import com.example.redrockmidtermexam.model.response.ColorPageResponse
  */
 class ColorViewModel : ViewModel() {
     val observeIfGet = ArrayList<Int>()
-    val viewPagerData = ArrayList<List<ColorListResponse.Data.Color>>()
+    val viewPagerData = ArrayList<List<Color>>()
 
     suspend fun getColorPageId() {
         val response = DataNetwork.getColorPageId()
@@ -30,7 +32,7 @@ class ColorViewModel : ViewModel() {
     }
 
     private fun dealColorListResponse(response:ColorListResponse) {
-        val arrayList = ArrayList<ColorListResponse.Data.Color>()
+        val arrayList = ArrayList<Color>()
         for(i in response.data.color_list){
             arrayList.add(i)
         }

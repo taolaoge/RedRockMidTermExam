@@ -10,11 +10,9 @@
         android:id="@+id/color_detail_tv_d"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="68dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/color_detail_g"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toEndOf="@+id/color_detail_tv_c"
         app:layout_constraintTop_toBottomOf="@+id/color_detail_d"
         app:layout_constraintVertical_bias="0.216" />
@@ -34,13 +32,13 @@
         android:id="@+id/color_detail_tv_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="3dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/color_detail_e"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_detail_b"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/color_detail_g"
@@ -198,11 +196,11 @@
         android:id="@+id/color_detail_a"
         android:layout_width="320dp"
         android:layout_height="100dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/color_detail_toolbar">
 
         <TextView
             android:id="@+id/testView7"
@@ -214,6 +212,81 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="HEX"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.505" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="RGB"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="CMYK"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/color_detail_tv_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="TextView"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/color_detail_tv_rgb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="TextView"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/color_detail_tv_cmyk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -222,14 +295,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:text="TextView"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/color_detail_a"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/color_detail_toolbar"
         app:layout_constraintVertical_bias="0.666" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/color_toolbar"
+        android:id="@+id/color_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
@@ -282,45 +356,45 @@
         android:id="@+id/color_detail_tv_e"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/color_detail_tv_f"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_detail_e"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/color_detail_tv_f"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
+        android:layout_marginStart="68dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/color_detail_tv_g"
-        app:layout_constraintTop_toBottomOf="@+id/color_detail_f" />
+        app:layout_constraintBottom_toBottomOf="@+id/color_detail_tv_e"
+        app:layout_constraintStart_toEndOf="@+id/color_detail_tv_e"
+        app:layout_constraintTop_toTopOf="@+id/color_detail_tv_e"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/color_detail_tv_g"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="88dp"
+        android:layout_marginStart="68dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_detail_g" />
+        app:layout_constraintStart_toEndOf="@+id/color_detail_tv_f"
+        app:layout_constraintTop_toBottomOf="@+id/color_detail_g"
+        app:layout_constraintVertical_bias="0.304" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="44dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button2"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -328,59 +402,52 @@
         android:id="@+id/button2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="196dp"
+        android:layout_marginEnd="164dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/color_detail_c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_detail_a"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintVertical_bias="0.359" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="44dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/color_detail_c"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/color_detail_tv_match"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintEnd_toEndOf="@+id/button1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/button6"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/shape_gradual"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button3"

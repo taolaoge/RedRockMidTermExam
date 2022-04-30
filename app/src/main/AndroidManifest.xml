@@ -13,6 +13,9 @@
         android:theme="@style/Theme.RedRockMidTermExam"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activitys.ColorDetailActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.activitys.ColorActivity"
             android:exported="false" />
         <activity

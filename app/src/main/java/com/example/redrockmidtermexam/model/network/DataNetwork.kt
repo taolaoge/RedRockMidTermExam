@@ -23,6 +23,8 @@ object DataNetwork {
 
     suspend fun getColorList(id:Int) = netService.getColorList(id).await()
 
+    suspend fun getColorDetail(id:Int) = netService.getColorDetail(id).await()
+
     private suspend fun <T> retrofit2.Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T> {

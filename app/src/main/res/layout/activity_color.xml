@@ -8,7 +8,7 @@
     tools:context=".ui.activitys.ColorActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/color_toolbar"
+        android:id="@+id/color_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         android:id="@+id/color_vp2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/color_toolbar">
+        android:layout_below="@id/color_detail_toolbar">
     </androidx.viewpager2.widget.ViewPager2>
 
 </RelativeLayout>
