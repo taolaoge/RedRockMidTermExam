@@ -6,16 +6,16 @@ package com.example.redrockmidtermexam.model.response
  * email : 1678921845@qq.com
  * date : 2022/4/30
  */
-data class ColorList(
+data class ColorListResponse(
     val code:Int,
     val message:String,
-
+    val data:Data
 ){
     data class Data(
         val has_more:Boolean,
-        val color_list:List<com.example.redrockmidtermexam.model.response.ColorList>
+        val color_list:List<Color>
     ){
-        data class ColorList(
+        data class Color(
             val id:Int,
             val name:String,
             val hex:String,

@@ -8,7 +8,7 @@ import android.provider.ContactsContract
  * email : 1678921845@qq.com
  * date : 2022/4/30
  */
-data class ColorPage(
+data class ColorPageResponse(
     val code: Int,
     val message: String,
     val data: Data

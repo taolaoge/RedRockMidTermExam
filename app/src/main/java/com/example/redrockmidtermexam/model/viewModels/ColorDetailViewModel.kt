@@ -8,9 +8,6 @@ import androidx.lifecycle.ViewModel
  * email : 1678921845@qq.com
  * date : 2022/4/30
  */
-class ColorFragmentViewModel : ViewModel() {
+class ColorDetailViewModel :ViewModel() {
 
-    fun getColorList(id:Int){
-
-    }
 }

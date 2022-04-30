@@ -1,30 +1,31 @@
-package com.example.redrockmidtermexam.ui
+package com.example.redrockmidtermexam.ui.activitys
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityColorBinding
+import com.example.redrockmidtermexam.model.adapters.ColorViewPagerAdapter
 import com.example.redrockmidtermexam.model.viewModels.ColorViewModel
-import com.example.redrockmidtermexam.ui.fragments.ColorFragment
+import kotlinx.coroutines.launch
 
 class ColorActivity : AppCompatActivity(), View.OnClickListener {
-
     private val viewModel: ColorViewModel by viewModels()
     lateinit var binding: ActivityColorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityColorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initFragmentsAdapter()
+        BaseApp.scope.launch {
+            repeat(7) {
+                viewModel.getColorList(it + 1)
+            }
+            initViewPager()
+        }
         initClickView()
-    }
-
-    private fun initFragmentsAdapter() {
-
 
         //取消vp2滑动到底滑不动时的动画
         val child: View = binding.colorVp2.getChildAt(0)
@@ -32,7 +33,30 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
             child.setOverScrollMode(View.OVER_SCROLL_NEVER)
         }
 
+        /*//监听vp2的滑动，对应的bottomNavigation也选中，绑定vp2和bottomNavigation
+        binding.colorVp2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                Log.d("bbp", "onPageSelected:$position ")
+                //判断是否需要重新请求数据
+                if ((position + 1) in viewModel.observeIfGet) {
+
+                } else {
+                    viewModel.observeIfGet.add(position + 1)
+                    BaseApp.scope.launch {
+                        viewModel.getColorList(position + 1)
+                    }
+                }
+            }
+        })*/
     }
+
+    private fun initViewPager() {
+        runOnUiThread {
+            binding.colorVp2.adapter = ColorViewPagerAdapter(7, viewModel.viewPagerData)
+        }
+    }
+
 
     private fun initClickView() {
         binding.colorToolbarTitle.setOnClickListener(this)
@@ -47,4 +71,5 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
             R.id.color_toolbar_vector -> finish()
         }
     }
+
 }

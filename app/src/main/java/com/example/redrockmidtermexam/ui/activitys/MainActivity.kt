@@ -1,4 +1,4 @@
-package com.example.redrockmidtermexam.ui
+package com.example.redrockmidtermexam.ui.activitys
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View) {
         when(v.id){
             R.id.main_color->{
-                val intent = Intent(this,ColorActivity::class.java)
+                val intent = Intent(this, ColorActivity::class.java)
                 startActivity(intent)
             }
         }

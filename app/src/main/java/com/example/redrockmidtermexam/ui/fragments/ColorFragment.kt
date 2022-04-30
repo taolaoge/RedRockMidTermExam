@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.databinding.FragmentColorBinding
+import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.viewModels.ColorFragmentViewModel
 import kotlinx.coroutines.launch
 
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
  * date : 2022/4/30
  */
 class ColorFragment() :Fragment() {
+    private val data = ArrayList<Color>()
     private val viewModel by viewModels<ColorFragmentViewModel>()
     private lateinit var binding:FragmentColorBinding
 
@@ -30,8 +32,6 @@ class ColorFragment() :Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        BaseApp.scope.launch {
 
-        }
     }
 }
