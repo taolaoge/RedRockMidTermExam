@@ -26,7 +26,7 @@ class IdeaDetailViewPagerAdapter(private val responseList:ArrayList<IdeaDetailRe
     lateinit var parent: ViewGroup
 
     inner class InnerHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val mImg0: ImageView = view.findViewById(R.id.idea_detail_img0)
+        val mImg0: ImageView = view.findViewById(R.id.image30)
         val mImg1: LinearGradientView = view.findViewById(R.id.idea_detail_img1)
         val mImg2: LinearGradientView = view.findViewById(R.id.idea_detail_img2)
         val mImg3: LinearGradientView = view.findViewById(R.id.idea_detail_img3)

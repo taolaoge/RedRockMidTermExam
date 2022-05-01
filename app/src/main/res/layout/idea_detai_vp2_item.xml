@@ -6,14 +6,16 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/idea_detail_img0"
-        android:layout_width="100dp"
-        android:layout_height="420dp"
-        android:layout_marginStart="28dp"
+        android:id="@+id/image30"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,650:1152"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138"
+        app:layout_constraintVertical_bias="0.145"
         tools:srcCompat="@tools:sample/avatars" />
 
     <com.example.redrockmidtermexam.ui.view.LinearGradientView
@@ -23,7 +25,7 @@
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toEndOf="@+id/idea_detail_img0"
+        app:layout_constraintStart_toEndOf="@+id/image30"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.redrockmidtermexam.ui.view.LinearGradientView
@@ -55,7 +57,7 @@
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_img0"
+        app:layout_constraintTop_toBottomOf="@+id/image30"
         app:layout_constraintVertical_bias="0.181" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
