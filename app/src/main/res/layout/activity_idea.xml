@@ -32,11 +32,11 @@
                     android:layout_marginStart="8dp"
                     android:src="@drawable/ic____3"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/color_toolbar_vector"
+                    app:layout_constraintStart_toStartOf="@+id/idea_toolbar_vector"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/color_toolbar_vector"
+                    android:id="@+id/idea_toolbar_vector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"

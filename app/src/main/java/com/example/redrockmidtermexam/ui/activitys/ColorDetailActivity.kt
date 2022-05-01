@@ -64,6 +64,7 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
             binding.colorDetailTvF.text = "#${this[5].hex}"
             binding.colorDetailTvG.text = "#${this[6].hex}"
         }
+        //为渐变示例添加渐变数组
         for (i in 0..5) {
             shadeListData[i].run {
                 val array = IntArray(this.size)
@@ -93,6 +94,8 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         if (viewModel.ifRefresh) {
+            //请求到了color后需要重绘来为view增加渐变的效果，但是无法重绘view，只能重新绘制整个activity了，绷不住了
+
             recreate()
             viewModel.ifRefresh = false
         }

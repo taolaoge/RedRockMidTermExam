@@ -1,5 +1,6 @@
 package com.example.redrockmidtermexam.ui.activitys
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -45,9 +46,16 @@ class IdeaActivity : AppCompatActivity(),View.OnClickListener {
         binding.ideaImage3.setOnClickListener(this)
         binding.ideaImg2.setOnClickListener(this)
         binding.ideaImg1.setOnClickListener(this)
+        binding.ideaToolbarVector.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-
+         when(v.id){
+             R.id.idea_img1->{
+                 val intent = Intent(this,IdeaDetailActivity::class.java)
+                 startActivity(intent)
+             }
+             R.id.idea_toolbar_vector->finish()
+         }
     }
 }

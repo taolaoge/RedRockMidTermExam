@@ -12,11 +12,13 @@ import com.example.redrockmidtermexam.model.response.IdeaDetailResponse
  * date : 2022/5/1
  */
 class IdeaDetailViewModel : ViewModel() {
+    val titleList = ArrayList<String>()
     val responseList = ArrayList<IdeaDetailResponse>()
     val isFinish = MutableLiveData(false)
     suspend fun getIdeaDetail(id: Int) {
         val response = DataNetwork.getIdeaDetail(id)
         responseList.add(response)
+        titleList.add(response.data.title)
         if (id == 7){
             isFinish.postValue(true)
         }

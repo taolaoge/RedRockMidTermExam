@@ -14,6 +14,7 @@ data class IdeaDetailResponse(
     val data: Data
 ) {
     data class Data(
+        val title:String,
         val image:String,
         val intro: String,
         val colors: Colors,

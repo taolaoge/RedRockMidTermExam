@@ -20,9 +20,9 @@
         android:id="@+id/idea_detail_img1"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.664"
+        app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toEndOf="@+id/idea_detail_img0"
         app:layout_constraintTop_toTopOf="parent" />
 
