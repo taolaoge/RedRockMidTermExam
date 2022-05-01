@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import com.bumptech.glide.Glide
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityMainBinding
 import com.example.redrockmidtermexam.model.viewModels.MainViewModel
