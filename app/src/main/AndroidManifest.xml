@@ -3,6 +3,7 @@
     package="com.example.redrockmidtermexam">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".BaseApp"
         android:allowBackup="true"
@@ -13,8 +14,11 @@
         android:theme="@style/Theme.RedRockMidTermExam"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activitys.IdeaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activitys.ColorDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.activitys.ColorActivity"
             android:exported="false" />

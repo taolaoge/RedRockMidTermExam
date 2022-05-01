@@ -15,6 +15,7 @@ import com.example.redrockmidtermexam.model.response.ColorListResponse
  * date : 2022/4/30
  */
 class ColorDetailViewModel :ViewModel() {
+    var ifRefresh = true
     val isFinish = MutableLiveData(false)
     val colorsData = ArrayList<Color>()
     val shadeListData = ArrayList<List<Color>>()
