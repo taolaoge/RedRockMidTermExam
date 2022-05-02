@@ -1,14 +1,10 @@
 package com.example.redrockmidtermexam.model.viewModels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.redrockmidtermexam.BaseApp
-import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.ColorDetailResponse
-import com.example.redrockmidtermexam.model.response.ColorListResponse
 
 /**
  * description ： TODO:类的作用
@@ -17,6 +13,7 @@ import com.example.redrockmidtermexam.model.response.ColorListResponse
  * date : 2022/4/30
  */
 class ColorDetailViewModel :ViewModel() {
+    var shadeIdList = ArrayList<Int>()
     var ifRefresh = true
     val colorsData = ArrayList<Color>()
     val shadeListData = ArrayList<List<Color>>()
@@ -41,7 +38,7 @@ class ColorDetailViewModel :ViewModel() {
             add(response.data.colors.color_6)
             add(response.data.colors.color_7)
         }
-        for(i in 1..6){
+        for(i in 0..5){
             val arrayList = ArrayList<Color>()
             for (j in response.data.shades.shade_list[i].shade){
                 j.color.run {
@@ -50,6 +47,7 @@ class ColorDetailViewModel :ViewModel() {
                 }
             }
             shadeListData.add(arrayList)
+            shadeIdList.add(response.data.shades.shade_list[i].id)
         }
     }
 }

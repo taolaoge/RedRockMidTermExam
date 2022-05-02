@@ -41,16 +41,168 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:textColor="@color/black"
                 android:id="@+id/color_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="色谱"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect4"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect4"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect4"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect4"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect4"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect4"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect4"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect4"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect4"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect4"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect4"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect4"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect5"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect5"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect5"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect5"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect5"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect5"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect6"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect6"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect6"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect6"
+                app:layout_constraintStart_toEndOf="@+id/color_vp_unselect6"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect6"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect3"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect3"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect3"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect3"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect3"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect3"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_vp_select" />
+
+            <ImageView
+                android:id="@+id/color_vp_unselect1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect2"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect2"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect2"
+                app:srcCompat="@drawable/ic_vp_unselect" />
+
+            <ImageView
+                android:id="@+id/color_vp_select1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_vp_unselect2"
+                app:layout_constraintEnd_toStartOf="@+id/color_vp_unselect2"
+                app:layout_constraintTop_toTopOf="@+id/color_vp_unselect2"
+                app:srcCompat="@drawable/ic_vp_select" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

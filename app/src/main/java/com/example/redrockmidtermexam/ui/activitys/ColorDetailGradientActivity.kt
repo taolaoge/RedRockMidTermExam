@@ -4,24 +4,23 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
-import com.example.redrockmidtermexam.databinding.ActivityColorDetailBinding
 import com.example.redrockmidtermexam.databinding.ActivityColorDetailGradientBinding
-import com.example.redrockmidtermexam.databinding.ActivityIdeaBinding
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.ColorDetailGradientViewModel
-import com.example.redrockmidtermexam.model.viewModels.IdeaViewModel
 import kotlinx.coroutines.launch
 
-class ColorDetailGradientActivity : AppCompatActivity() {
+class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
     private val viewModel: ColorDetailGradientViewModel by viewModels()
     lateinit var binding: ActivityColorDetailGradientBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityColorDetailGradientBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.colorDetailGradientStarFinish.visibility = View.GONE
         viewModel.code.observe(this) {
             if (it != 114) {
                 this.toast(viewModel.message)
@@ -49,6 +48,31 @@ class ColorDetailGradientActivity : AppCompatActivity() {
                 )
             }
         }
+        initViewClick()
+    }
 
+    private fun initViewClick() {
+        binding.colorDetailGradientStarFinish.setOnClickListener(this)
+        binding.colorDetailGradientStar.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.color_detail_gradient_star -> starColor()
+            R.id.color_detail_gradient_star_finish -> deleteStarColor()
+        }
+    }
+
+    private fun deleteStarColor() {
+
+    }
+
+    private fun starColor() {
+        Log.d("bbp", "starColor:123 ")
+        val shadeId = intent.getIntExtra("shadeId",1)
+        BaseApp.scope.launch {
+            viewModel.postStarColor(shadeId)
+        }
+        binding.colorDetailGradientStarFinish.visibility = View.VISIBLE
     }
 }

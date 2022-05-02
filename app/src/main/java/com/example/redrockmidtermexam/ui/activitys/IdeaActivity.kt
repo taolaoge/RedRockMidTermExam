@@ -1,20 +1,16 @@
 package com.example.redrockmidtermexam.ui.activitys
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityIdeaBinding
-import com.example.redrockmidtermexam.databinding.ActivityMainBinding
 import com.example.redrockmidtermexam.extentions.intent
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.IdeaViewModel
-import com.example.redrockmidtermexam.model.viewModels.MainViewModel
 import com.example.redrockmidtermexam.utils.filter
 import kotlinx.coroutines.launch
 

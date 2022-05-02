@@ -22,6 +22,7 @@ data class ColorDetailResponse(
     val shade_list:List<Shade>
     ){
         data class Shade(
+            val id:Int,
             val shade:List<Color1>
         ){
             data class Color1(

@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic____31"
+        android:src="@drawable/ic_star"
         app:layout_constraintBottom_toTopOf="@+id/textView_star"
         app:layout_constraintEnd_toEndOf="@+id/textView_star"
         app:layout_constraintStart_toStartOf="@+id/textView_star" />

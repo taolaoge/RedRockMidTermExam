@@ -120,10 +120,11 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun intentGradientActivity(position: Int) {
+    private fun intentGradientActivity(position: Int) {
         val intent = this.getIntent<ColorDetailGradientActivity>()
+        intent.putExtra("shadeId",viewModel.shadeIdList[position-1])
         intent.putExtra("id", id)
-        intent.putExtra("position", position)
+        intent.putExtra("position", position-1)
         startActivity(intent)
     }
 

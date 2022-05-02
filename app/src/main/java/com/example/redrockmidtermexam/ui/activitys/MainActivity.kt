@@ -47,11 +47,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val token = BaseApp.header.getString("token","false")
                 if (token == "false"){
                     this.intent<LoginActivity>()
+                }else{
+                    this.intent<StarActivity>()
                 }
             }
             R.id.main_btn_out -> {
                 //清除token数据
-                if (BaseApp.header.getString("token","false") != "false")
+                if (BaseApp.header.getString("token","false") == "false")
                     this.toast("还未登录")
                 else{
                     BaseApp.header.edit{
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
             }
-            R.id.main_btn_test -> this.intent<ColorDetailGradientActivity>()
+            R.id.main_btn_test -> this.intent<TestActivity>()
         }
     }
 }

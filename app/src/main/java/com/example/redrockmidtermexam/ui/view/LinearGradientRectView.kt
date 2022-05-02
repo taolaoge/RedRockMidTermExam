@@ -25,7 +25,7 @@ class LinearGradientRectView @JvmOverloads constructor(
     private val positionArray2 = floatArrayOf(0f, 0.6f)
 
     var colorArray = intArrayOf(
-        Color.GREEN, Color.WHITE,Color.BLUE
+        Color.BLUE, Color.RED
     )
 
     init {

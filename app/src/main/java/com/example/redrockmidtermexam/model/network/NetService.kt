@@ -13,27 +13,39 @@ import retrofit2.http.*
  */
 interface NetService {
 
-   @GET("color/page")
-   fun getColorPageId():retrofit2.Call<ColorPageResponse>
+    @GET("color/page")
+    fun getColorPageId(): retrofit2.Call<ColorPageResponse>
 
-   @GET("color/color_list")
-   fun getColorList(@Query("theme_id") id:Int):retrofit2.Call<ColorListResponse>
+    @GET("color/color_list")
+    fun getColorList(@Query("theme_id") id: Int): retrofit2.Call<ColorListResponse>
 
-   @GET("color/color_detail")
-   fun getColorDetail(@Query("color_detail_id") id:Int):retrofit2.Call<ColorDetailResponse>
+    @GET("color/color_detail")
+    fun getColorDetail(@Query("color_detail_id") id: Int): retrofit2.Call<ColorDetailResponse>
 
-   @GET("idea/idea")
-   fun getIdeaFirst():retrofit2.Call<IdeaFirstResponse>
+    @GET("idea/idea")
+    fun getIdeaFirst(): retrofit2.Call<IdeaFirstResponse>
 
-   @GET("idea/idea_detail")
-   fun getIdeaDetail(@Query("idea_detail_id") id:Int):retrofit2.Call<IdeaDetailResponse>
+    @GET("idea/idea_detail")
+    fun getIdeaDetail(@Query("idea_detail_id") id: Int): retrofit2.Call<IdeaDetailResponse>
 
-   @FormUrlEncoded
-   @POST("/user/register")
-   fun postRegister(@Field("phone_number") phone_number:String,@Field("name") name:String)
-   :retrofit2.Call<RegisterResponse>
+    @FormUrlEncoded
+    @POST("user/register")
+    fun postRegister(@Field("phone_number") phone_number: String, @Field("name") name: String)
+            : retrofit2.Call<RegisterResponse>
 
-   @FormUrlEncoded
-   @POST("/user/login")
-   fun postLogin(@Field("phone_number") phone_number: String):retrofit2.Call<LoginResponse>
+    @FormUrlEncoded
+    @POST("user/login")
+    fun postLogin(@Field("phone_number") phone_number: String): retrofit2.Call<LoginResponse>
+
+    @GET("star/star_list")
+    fun getStarList(
+        @Query("page") page: Int, @Query("limit") limit: Int, @Header("Authorization") token: String
+    ): retrofit2.Call<StarResponse>
+
+    @FormUrlEncoded
+    @POST("/star/star")
+    fun postStarColor(
+        @Field("shade_id") shade_id: Int, @Field("name") name:String,
+        @Header("Authorization") token: String
+    ): retrofit2.Call<StarResponse>
 }

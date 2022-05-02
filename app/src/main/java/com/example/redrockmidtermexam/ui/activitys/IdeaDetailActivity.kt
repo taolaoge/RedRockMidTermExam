@@ -40,6 +40,7 @@ class IdeaDetailActivity : AppCompatActivity(), View.OnClickListener {
         if (child is RecyclerView) {
             child.setOverScrollMode(View.OVER_SCROLL_NEVER)
         }
+        //监听vp2的滑动
         binding.ideaDetailVp2.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
