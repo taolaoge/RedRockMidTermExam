@@ -15,7 +15,6 @@ import com.example.redrockmidtermexam.model.response.IdeaFirstResponse
  */
 class IdeaViewModel:ViewModel() {
     val imageList = ArrayList<String>()
-    val isFinish = MutableLiveData(false)
     var message = ("")
     val code = MutableLiveData<Int>()
 
@@ -24,15 +23,13 @@ class IdeaViewModel:ViewModel() {
         message = response.message
         if (response.code == 114){
             dealIdeaFirstResponse(response)
-        }else{
-            code.postValue(response.code)
         }
+        code.postValue(response.code)
     }
 
     private fun dealIdeaFirstResponse(response:IdeaFirstResponse) {
         for (data in response.data){
             imageList.add(data.image)
         }
-        isFinish.postValue(true)
     }
 }

@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.145"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/idea_detail_img1"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toEndOf="@+id/image30"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/idea_detail_img2"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="@+id/idea_detail_img1"
         app:layout_constraintTop_toBottomOf="@+id/idea_detail_img1" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/idea_detail_img3"
         android:layout_width="120dp"
         android:layout_height="120dp"

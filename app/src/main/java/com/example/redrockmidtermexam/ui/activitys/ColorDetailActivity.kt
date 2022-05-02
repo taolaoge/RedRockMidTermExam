@@ -1,8 +1,7 @@
 package com.example.redrockmidtermexam.ui.activitys
 
+import android.content.Intent
 import android.graphics.Color
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -12,26 +11,24 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityColorDetailBinding
+import com.example.redrockmidtermexam.extentions.getIntent
+import com.example.redrockmidtermexam.extentions.intent
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.ColorDetailViewModel
-import com.example.redrockmidtermexam.ui.view.LinearGradientView
 import kotlinx.coroutines.launch
 
 class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: ColorDetailViewModel by viewModels()
     lateinit var binding: ActivityColorDetailBinding
+    var id = 1
+    val colorArrayList = ArrayList<IntArray>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityColorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val id = intent.getIntExtra("id", 1)
+        id = intent.getIntExtra("id", 1)
         viewModel.code.observe(this) {
-            this.toast(viewModel.message)
-        }
-        viewModel.isFinish.observe(this) {
-            if (it) {
-                initView()
-            }
+            if (it != 114) this.toast(viewModel.message) else initView()
         }
         if (viewModel.ifRefresh) {
             BaseApp.scope.launch {
@@ -43,6 +40,12 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initClickView() {
         binding.colorToolbarVector.setOnClickListener(this)
+        binding.colorDetailImg1.setOnClickListener(this)
+        binding.colorDetailImg2.setOnClickListener(this)
+        binding.colorDetailImg3.setOnClickListener(this)
+        binding.colorDetailImg4.setOnClickListener(this)
+        binding.colorDetailImg5.setOnClickListener(this)
+        binding.colorDetailImg6.setOnClickListener(this)
     }
 
     private fun initView() {
@@ -75,6 +78,7 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
                 for ((index, color) in this.withIndex()) {
                     array[index] = Color.parseColor("#${color.hex}")
                 }
+                colorArrayList.add(array)
                 when (i) {
                     0 -> binding.colorDetailImg1.run {
                         colorArray = array
@@ -99,7 +103,6 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (viewModel.ifRefresh) {
             //请求到了color后需要重绘来为view增加渐变的效果，但是无法重绘view，只能重新绘制整个activity了，绷不住了
-
             recreate()
             viewModel.ifRefresh = false
         }
@@ -108,7 +111,20 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.color_toolbar_vector -> finish()
+            R.id.color_detail_img1 -> intentGradientActivity(1)
+            R.id.color_detail_img2 -> intentGradientActivity(2)
+            R.id.color_detail_img3 -> intentGradientActivity(3)
+            R.id.color_detail_img4 -> intentGradientActivity(4)
+            R.id.color_detail_img5 -> intentGradientActivity(5)
+            R.id.color_detail_img6 -> intentGradientActivity(6)
         }
+    }
+
+    fun intentGradientActivity(position: Int) {
+        val intent = this.getIntent<ColorDetailGradientActivity>()
+        intent.putExtra("id", id)
+        intent.putExtra("position", position)
+        startActivity(intent)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

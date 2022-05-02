@@ -18,7 +18,6 @@ import com.example.redrockmidtermexam.model.response.ColorListResponse
  */
 class ColorDetailViewModel :ViewModel() {
     var ifRefresh = true
-    val isFinish = MutableLiveData(false)
     val colorsData = ArrayList<Color>()
     val shadeListData = ArrayList<List<Color>>()
     var message = ("")
@@ -28,9 +27,8 @@ class ColorDetailViewModel :ViewModel() {
         val response = DataNetwork.getColorDetail(id)
         if (response.code == 114) {
             dealColorDetailResponse(response)
-        }else{
-            code.postValue(response.code)
         }
+        code.postValue(response.code)
     }
 
     private fun dealColorDetailResponse(response:ColorDetailResponse) {
@@ -53,6 +51,5 @@ class ColorDetailViewModel :ViewModel() {
             }
             shadeListData.add(arrayList)
         }
-        isFinish.postValue(true)
     }
 }

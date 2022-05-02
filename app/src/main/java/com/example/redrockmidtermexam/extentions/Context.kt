@@ -22,5 +22,7 @@ inline fun <reified T> Context.intent() {
     startActivity(intent)
 }
 
+inline fun <reified T> Context.getIntent():Intent = create(this,T::class.java)
+
 fun <T> create(context:Context,serviceClass: Class<T>):Intent = Intent(context,serviceClass)
 

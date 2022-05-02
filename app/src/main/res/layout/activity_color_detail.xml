@@ -386,74 +386,8 @@
         app:layout_constraintTop_toBottomOf="@+id/color_detail_g"
         app:layout_constraintVertical_bias="0.304" />
 
-    <!--<Button
-        android:id="@+id/button1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="44dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />-->
 
-    <!--<Button
-        android:id="@+id/button2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="164dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintBottom_toTopOf="@+id/color_detail_c"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_detail_a"
-        app:layout_constraintVertical_bias="0.359" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="44dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintEnd_toEndOf="@+id/button1"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shape_gradual"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
--->
-
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img1"
         android:layout_width="79dp"
         android:layout_height="89dp"
@@ -463,7 +397,7 @@
         app:layout_constraintTop_toTopOf="@+id/color_detail_img2"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img2"
         android:layout_width="79dp"
         android:layout_height="89dp"
@@ -472,7 +406,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img3"
         android:layout_width="79dp"
         android:layout_height="89dp"
@@ -482,7 +416,7 @@
         app:layout_constraintTop_toTopOf="@+id/color_detail_img2"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img4"
         android:layout_width="79dp"
         android:layout_height="89dp"
@@ -492,7 +426,7 @@
         app:layout_constraintTop_toTopOf="@+id/color_detail_img5"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img5"
         android:layout_width="79dp"
         android:layout_height="89dp"
@@ -502,7 +436,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientView
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
         android:id="@+id/color_detail_img6"
         android:layout_width="79dp"
         android:layout_height="89dp"

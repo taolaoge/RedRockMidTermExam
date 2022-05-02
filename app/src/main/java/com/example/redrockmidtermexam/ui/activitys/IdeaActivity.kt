@@ -26,10 +26,8 @@ class IdeaActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityIdeaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.code.observe(this) {
-            this.toast(viewModel.message)
-        }
-        viewModel.isFinish.observe(this) {
-            if (it) {
+            if (it != 114) this.toast(viewModel.message)
+            else{
                 for (i in 0 until viewModel.imageList.size) {
                     when (i) {
                         0 -> Glide.with(this).load(viewModel.imageList[0].filter())

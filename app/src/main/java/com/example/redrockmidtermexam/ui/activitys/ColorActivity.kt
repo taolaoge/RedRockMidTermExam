@@ -37,22 +37,6 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
             child.setOverScrollMode(View.OVER_SCROLL_NEVER)
         }
 
-        /*//监听vp2的滑动，对应的bottomNavigation也选中，绑定vp2和bottomNavigation
-        binding.colorVp2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Log.d("bbp", "onPageSelected:$position ")
-                //判断是否需要重新请求数据
-                if ((position + 1) in viewModel.observeIfGet) {
-
-                } else {
-                    viewModel.observeIfGet.add(position + 1)
-                    BaseApp.scope.launch {
-                        viewModel.getColorList(position + 1)
-                    }
-                }
-            }
-        })*/
     }
 
     private fun initViewPager() {

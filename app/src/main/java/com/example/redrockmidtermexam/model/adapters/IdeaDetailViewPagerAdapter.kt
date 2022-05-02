@@ -1,7 +1,6 @@
 package com.example.redrockmidtermexam.model.adapters
 
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.model.response.IdeaDetailResponse
-import com.example.redrockmidtermexam.ui.view.LinearGradientView
+import com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
 import com.example.redrockmidtermexam.utils.filter
 
 /**
@@ -27,9 +26,9 @@ class IdeaDetailViewPagerAdapter(private val responseList:ArrayList<IdeaDetailRe
 
     inner class InnerHolder(view: View) : RecyclerView.ViewHolder(view) {
         val mImg0: ImageView = view.findViewById(R.id.image30)
-        val mImg1: LinearGradientView = view.findViewById(R.id.idea_detail_img1)
-        val mImg2: LinearGradientView = view.findViewById(R.id.idea_detail_img2)
-        val mImg3: LinearGradientView = view.findViewById(R.id.idea_detail_img3)
+        val mImg1: LinearGradientCircleView = view.findViewById(R.id.idea_detail_img1)
+        val mImg2: LinearGradientCircleView = view.findViewById(R.id.idea_detail_img2)
+        val mImg3: LinearGradientCircleView = view.findViewById(R.id.idea_detail_img3)
         val mLayout1:ConstraintLayout = view.findViewById(R.id.idea_detail_color1)
         val mLayout2:ConstraintLayout = view.findViewById(R.id.idea_detail_color2)
         val mLayout3:ConstraintLayout = view.findViewById(R.id.idea_detail_color3)
