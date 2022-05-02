@@ -14,6 +14,14 @@
         android:theme="@style/Theme.RedRockMidTermExam"
         android:usesCleartextTraffic="true">
         <activity
+            android:launchMode="singleTask"
+            android:name=".ui.activitys.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:launchMode="singleTask"
+            android:name=".ui.activitys.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activitys.IdeaDetailActivity"
             android:exported="false" />
         <activity

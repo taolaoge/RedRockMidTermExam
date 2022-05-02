@@ -22,13 +22,14 @@ class ColorDetailViewModel :ViewModel() {
     val colorsData = ArrayList<Color>()
     val shadeListData = ArrayList<List<Color>>()
     var message = ("")
-    val code = MutableLiveData(0)
+    val code = MutableLiveData<Int>()
 
     suspend fun getColorDetail(id:Int){
         val response = DataNetwork.getColorDetail(id)
-        code.postValue(response.code)
-        if (code.value == 114) {
+        if (response.code == 114) {
             dealColorDetailResponse(response)
+        }else{
+            code.postValue(response.code)
         }
     }
 
@@ -53,6 +54,5 @@ class ColorDetailViewModel :ViewModel() {
             shadeListData.add(arrayList)
         }
         isFinish.postValue(true)
-        Log.d("bbp", "dealColorDetailResponse:${shadeListData} ")
     }
 }

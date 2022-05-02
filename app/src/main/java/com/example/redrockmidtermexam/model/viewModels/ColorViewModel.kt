@@ -20,7 +20,7 @@ class ColorViewModel : ViewModel() {
     val observeIfGet = ArrayList<Int>()
     val viewPagerData = ArrayList<List<Color>>()
     var message = ("")
-    val code = MutableLiveData(0)
+    val code = MutableLiveData<Int>()
 
     /*suspend fun getColorPageId() {
         val response = DataNetwork.getColorPageId()
@@ -33,10 +33,11 @@ class ColorViewModel : ViewModel() {
 
     suspend fun getColorList(id: Int) {
         val response = DataNetwork.getColorList(id)
-        code.postValue(response.code)
         message = response.message
-        if (code.value == 114) {
+        if (response.code == 114) {
             dealColorListResponse(response)
+        }else{
+            code.postValue(response.code)
         }
     }
 

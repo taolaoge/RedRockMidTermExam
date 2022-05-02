@@ -1,8 +1,8 @@
 package com.example.wanandroid_mvvm.model.network
 
+import androidx.core.view.ViewCompat
 import com.example.redrockmidtermexam.model.response.*
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 /**
@@ -27,4 +27,13 @@ interface NetService {
 
    @GET("idea/idea_detail")
    fun getIdeaDetail(@Query("idea_detail_id") id:Int):retrofit2.Call<IdeaDetailResponse>
+
+   @FormUrlEncoded
+   @POST("/user/register")
+   fun postRegister(@Field("phone_number") phone_number:String,@Field("name") name:String)
+   :retrofit2.Call<RegisterResponse>
+
+   @FormUrlEncoded
+   @POST("/user/login")
+   fun postLogin(@Field("phone_number") phone_number: String):retrofit2.Call<LoginResponse>
 }

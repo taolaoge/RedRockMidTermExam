@@ -20,9 +20,8 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityColorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.code.observe(this){
-            if (it != 114)
-                this.toast(viewModel.message)
+        viewModel.code.observe(this) {
+            this.toast(viewModel.message)
         }
         BaseApp.scope.launch {
             repeat(7) {

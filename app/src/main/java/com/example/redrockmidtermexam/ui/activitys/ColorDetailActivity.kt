@@ -25,9 +25,8 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityColorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val id = intent.getIntExtra("id", 1)
-        viewModel.code.observe(this){
-            if (it != 114)
-                this.toast(viewModel.message)
+        viewModel.code.observe(this) {
+            this.toast(viewModel.message)
         }
         viewModel.isFinish.observe(this) {
             if (it) {

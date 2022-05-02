@@ -54,7 +54,6 @@ class IdeaDetailViewPagerAdapter(private val responseList:ArrayList<IdeaDetailRe
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
         val colorList = responseList[position].data.colors
         val shadeList = responseList[position].data.shades
-        Log.d("bbp", "onBindViewHolder: $shadeList")
         holder.run {
             Glide.with(parent).load(responseList[position].data.image.filter()).into(mImg0)
             mTv1.text = "#${colorList.color_1.hex}"

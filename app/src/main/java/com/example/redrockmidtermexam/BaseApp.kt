@@ -3,6 +3,7 @@ package com.example.redrockmidtermexam
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 
@@ -23,7 +24,8 @@ class BaseApp : Application() {
         //防止context内存泄漏
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
-        val job = Job()
+        val header: SharedPreferences by lazy { context.getSharedPreferences("header",Context.MODE_PRIVATE) }
+        private val job = Job()
         val scope = CoroutineScope(job)
     }
 }

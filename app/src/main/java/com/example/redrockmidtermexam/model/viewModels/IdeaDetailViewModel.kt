@@ -18,18 +18,19 @@ class IdeaDetailViewModel : ViewModel() {
     val responseList = ArrayList<IdeaDetailResponse>()
     val isFinish = MutableLiveData(false)
     var message = ("")
-    val code = MutableLiveData(0)
+    val code = MutableLiveData<Int>()
 
     suspend fun getIdeaDetail(id: Int) {
         val response = DataNetwork.getIdeaDetail(id)
         code.postValue(response.code)
-        message = response.message
-        if (code.value == 114) {
+        if (response.code == 114) {
             responseList.add(response)
             titleList.add(response.data.title)
             if (id == 7) {
                 isFinish.postValue(true)
             }
+        }else{
+            message = response.message
         }
     }
 }

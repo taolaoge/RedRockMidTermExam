@@ -14,7 +14,7 @@ import com.example.redrockmidtermexam.model.adapters.IdeaDetailViewPagerAdapter
 import com.example.redrockmidtermexam.model.viewModels.IdeaDetailViewModel
 import kotlinx.coroutines.launch
 
-class IdeaDetailActivity : AppCompatActivity(),View.OnClickListener {
+class IdeaDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private val viewModel: IdeaDetailViewModel by viewModels()
     lateinit var binding: ActivityIdeaDetailBinding
@@ -22,12 +22,11 @@ class IdeaDetailActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityIdeaDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.code.observe(this){
-            if (it != 114)
-                this.toast(viewModel.message)
+        viewModel.code.observe(this) {
+            this.toast(viewModel.message)
         }
-        viewModel.isFinish.observe(this){
-            if (it){
+        viewModel.isFinish.observe(this) {
+            if (it) {
                 initAdapter()
             }
         }
@@ -41,7 +40,8 @@ class IdeaDetailActivity : AppCompatActivity(),View.OnClickListener {
         if (child is RecyclerView) {
             child.setOverScrollMode(View.OVER_SCROLL_NEVER)
         }
-        binding.ideaDetailVp2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.ideaDetailVp2.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.ideaDetailToolbarTitle.text = viewModel.titleList[position]
@@ -52,14 +52,14 @@ class IdeaDetailActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun initAdapter() {
-        runOnUiThread{
+        runOnUiThread {
             binding.ideaDetailVp2.adapter = IdeaDetailViewPagerAdapter(viewModel.responseList)
         }
     }
 
     override fun onClick(v: View) {
-        when(v.id){
-            R.id.idea_detail_toolbar_vector->finish()
+        when (v.id) {
+            R.id.idea_detail_toolbar_vector -> finish()
         }
     }
 }

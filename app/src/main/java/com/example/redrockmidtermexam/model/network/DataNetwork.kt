@@ -21,13 +21,18 @@ object DataNetwork {
 
     suspend fun getColorPageId() = netService.getColorPageId().await()
 
-    suspend fun getColorList(id:Int) = netService.getColorList(id).await()
+    suspend fun getColorList(id: Int) = netService.getColorList(id).await()
 
-    suspend fun getColorDetail(id:Int) = netService.getColorDetail(id).await()
+    suspend fun getColorDetail(id: Int) = netService.getColorDetail(id).await()
 
     suspend fun getIdeaFirst() = netService.getIdeaFirst().await()
 
-    suspend fun getIdeaDetail(id:Int) = netService.getIdeaDetail(id).await()
+    suspend fun getIdeaDetail(id: Int) = netService.getIdeaDetail(id).await()
+
+    suspend fun postLogin(phone_number: String) = netService.postLogin(phone_number).await()
+
+    suspend fun postRegister(phone_number: String, name: String)
+    = netService.postRegister(phone_number, name).await()
 
     private suspend fun <T> retrofit2.Call<T>.await(): T {
         return suspendCoroutine {

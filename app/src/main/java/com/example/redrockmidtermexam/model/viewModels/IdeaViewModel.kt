@@ -17,14 +17,15 @@ class IdeaViewModel:ViewModel() {
     val imageList = ArrayList<String>()
     val isFinish = MutableLiveData(false)
     var message = ("")
-    val code = MutableLiveData(0)
+    val code = MutableLiveData<Int>()
 
     suspend fun getIdeaFirst(){
         val response = DataNetwork.getIdeaFirst()
-        code.postValue(response.code)
         message = response.message
-        if (code.value == 114){
+        if (response.code == 114){
             dealIdeaFirstResponse(response)
+        }else{
+            code.postValue(response.code)
         }
     }
 
