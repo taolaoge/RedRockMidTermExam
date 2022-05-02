@@ -2,6 +2,8 @@ package com.example.redrockmidtermexam.model.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.redrockmidtermexam.BaseApp
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.IdeaDetailResponse
 
@@ -15,12 +17,19 @@ class IdeaDetailViewModel : ViewModel() {
     val titleList = ArrayList<String>()
     val responseList = ArrayList<IdeaDetailResponse>()
     val isFinish = MutableLiveData(false)
+    var message = ("")
+    val code = MutableLiveData(0)
+
     suspend fun getIdeaDetail(id: Int) {
         val response = DataNetwork.getIdeaDetail(id)
-        responseList.add(response)
-        titleList.add(response.data.title)
-        if (id == 7){
-            isFinish.postValue(true)
+        code.postValue(response.code)
+        message = response.message
+        if (code.value == 114) {
+            responseList.add(response)
+            titleList.add(response.data.title)
+            if (id == 7) {
+                isFinish.postValue(true)
+            }
         }
     }
 }

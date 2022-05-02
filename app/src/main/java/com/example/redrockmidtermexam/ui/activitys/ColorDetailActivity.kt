@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityColorDetailBinding
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.ColorDetailViewModel
 import com.example.redrockmidtermexam.ui.view.LinearGradientView
 import kotlinx.coroutines.launch
@@ -24,6 +25,10 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityColorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val id = intent.getIntExtra("id", 1)
+        viewModel.code.observe(this){
+            if (it != 114)
+                this.toast(viewModel.message)
+        }
         viewModel.isFinish.observe(this) {
             if (it) {
                 initView()

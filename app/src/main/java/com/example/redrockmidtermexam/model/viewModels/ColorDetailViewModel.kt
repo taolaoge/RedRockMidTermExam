@@ -3,6 +3,8 @@ package com.example.redrockmidtermexam.model.viewModels
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.redrockmidtermexam.BaseApp
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.ColorDetailResponse
@@ -19,10 +21,15 @@ class ColorDetailViewModel :ViewModel() {
     val isFinish = MutableLiveData(false)
     val colorsData = ArrayList<Color>()
     val shadeListData = ArrayList<List<Color>>()
+    var message = ("")
+    val code = MutableLiveData(0)
 
     suspend fun getColorDetail(id:Int){
         val response = DataNetwork.getColorDetail(id)
-        dealColorDetailResponse(response)
+        code.postValue(response.code)
+        if (code.value == 114) {
+            dealColorDetailResponse(response)
+        }
     }
 
     private fun dealColorDetailResponse(response:ColorDetailResponse) {

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityColorBinding
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.adapters.ColorViewPagerAdapter
 import com.example.redrockmidtermexam.model.viewModels.ColorViewModel
 import kotlinx.coroutines.launch
@@ -19,6 +20,10 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityColorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.code.observe(this){
+            if (it != 114)
+                this.toast(viewModel.message)
+        }
         BaseApp.scope.launch {
             repeat(7) {
                 viewModel.getColorList(it + 1)

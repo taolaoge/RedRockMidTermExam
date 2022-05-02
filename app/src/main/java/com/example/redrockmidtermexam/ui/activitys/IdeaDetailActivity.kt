@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityIdeaDetailBinding
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.adapters.IdeaDetailViewPagerAdapter
 import com.example.redrockmidtermexam.model.viewModels.IdeaDetailViewModel
 import kotlinx.coroutines.launch
@@ -21,6 +22,10 @@ class IdeaDetailActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityIdeaDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.code.observe(this){
+            if (it != 114)
+                this.toast(viewModel.message)
+        }
         viewModel.isFinish.observe(this){
             if (it){
                 initAdapter()

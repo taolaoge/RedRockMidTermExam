@@ -11,6 +11,7 @@ import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.databinding.ActivityIdeaBinding
 import com.example.redrockmidtermexam.databinding.ActivityMainBinding
+import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.IdeaViewModel
 import com.example.redrockmidtermexam.model.viewModels.MainViewModel
 import com.example.redrockmidtermexam.utils.filter
@@ -23,6 +24,10 @@ class IdeaActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityIdeaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.code.observe(this){
+            if (it != 114)
+                this.toast(viewModel.message)
+        }
         viewModel.isFinish.observe(this) {
             if (it) {
                 for (i in 0 until viewModel.imageList.size){
