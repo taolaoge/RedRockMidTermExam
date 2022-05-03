@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.mainIdea.setOnClickListener(this)
         binding.mainStar.setOnClickListener(this)
         binding.mainBtnOut.setOnClickListener(this)
-        binding.mainBtnTest.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -61,7 +60,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
             }
-            R.id.main_btn_test -> this.intent<TestActivity>()
         }
     }
 }

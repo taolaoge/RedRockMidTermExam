@@ -68,7 +68,6 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun starColor() {
-        Log.d("bbp", "starColor:123 ")
         val shadeId = intent.getIntExtra("shadeId",1)
         BaseApp.scope.launch {
             viewModel.postStarColor(shadeId)

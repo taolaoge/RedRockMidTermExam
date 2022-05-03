@@ -109,6 +109,7 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
+        //点击到了哪个渐变的，就携带参数到详细的渐变页面去重新请求参数
         when (v.id) {
             R.id.color_toolbar_vector -> finish()
             R.id.color_detail_img1 -> intentGradientActivity(1)

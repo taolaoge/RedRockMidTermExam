@@ -54,7 +54,7 @@ class IdeaActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.idea_img1 -> {
+            R.id.idea_img1,R.id.idea_image3,R.id.idea_img2,R.id.idea_image4 -> {
                 this.intent<IdeaDetailActivity>()
             }
             R.id.idea_toolbar_vector -> finish()

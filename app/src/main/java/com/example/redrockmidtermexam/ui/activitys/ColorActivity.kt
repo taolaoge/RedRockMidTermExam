@@ -25,6 +25,7 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
             this.toast(viewModel.message)
         }
         BaseApp.scope.launch {
+            //直接将所有的信息请求到先
             repeat(7) {
                 viewModel.getColorList(it + 1)
             }
@@ -41,30 +42,34 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         binding.colorVp2.registerOnPageChangeCallback(object :
         ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
-              //首先隐藏全部的选中的黑色的圆点
-              hideCircle()
-              //当选中的哪个vp2的时候将那个圆点填充为黑色
-              when(position){
-                  0 -> binding.colorVpSelect1.visibility = View.VISIBLE
-                  1 -> binding.colorVpSelect2.visibility = View.VISIBLE
-                  2 -> binding.colorVpSelect3.visibility = View.VISIBLE
-                  3 -> binding.colorVpSelect4.visibility = View.VISIBLE
-                  4 -> binding.colorVpSelect5.visibility = View.VISIBLE
-                  5 -> binding.colorVpSelect6.visibility = View.VISIBLE
-                  6 -> binding.colorVpSelect7.visibility = View.VISIBLE
-              }
+                //首先隐藏全部的选中的黑色的圆点
+                hideCircle()
+                //当选中的哪个vp2的时候将那个圆点填充为黑色
+                binding.apply {
+                    when (position) {
+                        0 -> colorVpSelect1.visibility = View.VISIBLE
+                        1 -> colorVpSelect2.visibility = View.VISIBLE
+                        2 -> colorVpSelect3.visibility = View.VISIBLE
+                        3 -> colorVpSelect4.visibility = View.VISIBLE
+                        4 -> colorVpSelect5.visibility = View.VISIBLE
+                        5 -> colorVpSelect6.visibility = View.VISIBLE
+                        6 -> colorVpSelect7.visibility = View.VISIBLE
+                    }
+                }
             }
         })
     }
 
     fun hideCircle(){
-        binding.colorVpSelect1.visibility = View.INVISIBLE
-        binding.colorVpSelect2.visibility = View.INVISIBLE
-        binding.colorVpSelect3.visibility = View.INVISIBLE
-        binding.colorVpSelect4.visibility = View.INVISIBLE
-        binding.colorVpSelect5.visibility = View.INVISIBLE
-        binding.colorVpSelect6.visibility = View.INVISIBLE
-        binding.colorVpSelect7.visibility = View.INVISIBLE
+        binding.run {
+            colorVpSelect1.visibility = View.INVISIBLE
+            colorVpSelect2.visibility = View.INVISIBLE
+            colorVpSelect3.visibility = View.INVISIBLE
+            colorVpSelect4.visibility = View.INVISIBLE
+            colorVpSelect5.visibility = View.INVISIBLE
+            colorVpSelect6.visibility = View.INVISIBLE
+            colorVpSelect7.visibility = View.INVISIBLE
+        }
     }
 
     private fun initViewPager() {

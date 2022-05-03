@@ -32,6 +32,9 @@ class StarActivity : AppCompatActivity() {
         BaseApp.scope.launch {
             viewModel.getStarList(1,100)
         }
+        binding.starToolbarVector.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initRecycleView() {
