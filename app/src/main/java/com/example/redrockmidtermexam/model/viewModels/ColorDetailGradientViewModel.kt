@@ -19,19 +19,29 @@ class ColorDetailGradientViewModel : ViewModel() {
     val message = ""
     val colorList = ArrayList<Color>()
     var ifFresh = true
+    val errorMsg = MutableLiveData<String>()
 
-    suspend fun postStarColor(shade_id:Int){
-        val response = DataNetwork.postStarColor(shade_id,"颜色",
-            "bearer ${BaseApp.header.getString("token","")}")
-        Log.d("bbp", "postStarColor:${response.message} ")
+    suspend fun postStarColor(shade_id:Int) {
+        try {
+            val response = DataNetwork.postStarColor(
+                shade_id, "颜色",
+                "bearer ${BaseApp.header.getString("token", "")}"
+            )
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
+        }
     }
 
     suspend fun getColorDetail(id:Int,position:Int){
-        val response = DataNetwork.getColorDetail(id)
-        if (response.code == 114){
-            dealColorDetailResponse(response,position)
+        try {
+            val response = DataNetwork.getColorDetail(id)
+            if (response.code == 114) {
+                dealColorDetailResponse(response, position)
+            }
+            code.postValue(response.code)
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
-        code.postValue(response.code)
     }
 
     private fun dealColorDetailResponse(response:ColorDetailResponse,position:Int) {

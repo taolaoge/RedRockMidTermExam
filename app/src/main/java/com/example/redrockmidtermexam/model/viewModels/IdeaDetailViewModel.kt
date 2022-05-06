@@ -6,6 +6,7 @@ import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.IdeaDetailResponse
+import java.lang.Exception
 
 /**
  * description ： TODO:类的作用
@@ -19,18 +20,23 @@ class IdeaDetailViewModel : ViewModel() {
     val isFinish = MutableLiveData(false)
     var message = ("")
     val code = MutableLiveData<Int>()
+    val errorMsg = MutableLiveData<String>()
 
     suspend fun getIdeaDetail(id: Int) {
-        val response = DataNetwork.getIdeaDetail(id)
-        code.postValue(response.code)
-        if (response.code == 114) {
-            responseList.add(response)
-            titleList.add(response.data.title)
-            if (id == 7) {
-                isFinish.postValue(true)
+        try {
+            val response = DataNetwork.getIdeaDetail(id)
+            if (response.code == 114) {
+                responseList.add(response)
+                titleList.add(response.data.title)
+                if (id == 7) {
+                    isFinish.postValue(true)
+                }
+            } else {
+                code.postValue(response.code)
+                message = response.message
             }
-        }else{
-            message = response.message
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
     }
 }

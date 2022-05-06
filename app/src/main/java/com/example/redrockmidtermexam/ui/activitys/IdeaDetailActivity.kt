@@ -22,6 +22,9 @@ class IdeaDetailActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityIdeaDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
+        }
         viewModel.code.observe(this) {
             this.toast(viewModel.message)
         }

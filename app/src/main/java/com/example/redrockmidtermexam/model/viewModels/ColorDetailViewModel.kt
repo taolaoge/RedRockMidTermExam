@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.ColorDetailResponse
+import java.lang.Exception
 
 /**
  * description ： TODO:类的作用
@@ -19,13 +20,18 @@ class ColorDetailViewModel :ViewModel() {
     val shadeListData = ArrayList<List<Color>>()
     var message = ("")
     val code = MutableLiveData<Int>()
+    val errorMsg = MutableLiveData<String>()
 
-    suspend fun getColorDetail(id:Int){
-        val response = DataNetwork.getColorDetail(id)
-        if (response.code == 114) {
-            dealColorDetailResponse(response)
+    suspend fun getColorDetail(id:Int) {
+        try {
+            val response = DataNetwork.getColorDetail(id)
+            if (response.code == 114) {
+                dealColorDetailResponse(response)
+            }
+            code.postValue(response.code)
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
-        code.postValue(response.code)
     }
 
     private fun dealColorDetailResponse(response:ColorDetailResponse) {

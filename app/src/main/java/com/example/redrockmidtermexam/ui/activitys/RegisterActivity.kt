@@ -19,6 +19,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
+        }
         viewModel.code.observe(this){
             if (it == 114) finish() else  this.toast(viewModel.message)
         }

@@ -21,6 +21,9 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
         binding = ActivityColorDetailGradientBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.colorDetailGradientStarFinish.visibility = View.GONE
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
+        }
         viewModel.code.observe(this) {
             if (it != 114) {
                 this.toast(viewModel.message)

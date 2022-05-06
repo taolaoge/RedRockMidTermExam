@@ -12,10 +12,10 @@
         android:id="@+id/main_color"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.582"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -55,22 +55,21 @@
         android:id="@+id/main_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="44dp"
         android:src="@drawable/ic_star"
-        app:layout_constraintBottom_toTopOf="@+id/textView_star"
-        app:layout_constraintEnd_toEndOf="@+id/textView_star"
-        app:layout_constraintStart_toStartOf="@+id/textView_star" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_idea" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_idea"
         android:layout_width="178dp"
         android:layout_height="162dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_idea"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_color">
 
 
         <ImageView
@@ -99,48 +98,50 @@
         android:id="@+id/textView_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="173dp"
+        android:layout_marginTop="20dp"
         android:text="收藏"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_idea" />
+        app:layout_constraintEnd_toEndOf="@+id/main_star"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="@+id/main_star"
+        app:layout_constraintTop_toBottomOf="@+id/main_star" />
 
     <TextView
         android:id="@+id/textView_idea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="173dp"
         android:text="灵感"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_color" />
+        app:layout_constraintTop_toBottomOf="@+id/main_idea" />
 
     <TextView
         android:id="@+id/textView_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="8dp"
         android:text="色谱"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_color" />
 
     <Button
         android:id="@+id/main_btn_out"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="退出登录"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/shape_btn_login"
+        android:text="退出登录"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_star" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

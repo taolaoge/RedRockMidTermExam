@@ -16,18 +16,23 @@ import com.example.redrockmidtermexam.model.network.DataNetwork
 class LoginViewModel : ViewModel() {
     val code = MutableLiveData<Int>()
     var message = ""
+    val errorMsg = MutableLiveData<String>()
 
-    suspend fun postLogin(phone_number:String){
-        val response = DataNetwork.postLogin(phone_number)
-        if (response.code == 114){
-            val token = response.data.token
-            //首先创造一个名为"header"的sp文件，必须要先创建
-            BaseApp.context.getSharedPreferences("header", Context.MODE_PRIVATE).edit {
-                putString("token",token)
+    suspend fun postLogin(phone_number:String) {
+        try {
+            val response = DataNetwork.postLogin(phone_number)
+            if (response.code == 114) {
+                val token = response.data.token
+                //首先创造一个名为"header"的sp文件，必须要先创建
+                BaseApp.context.getSharedPreferences("header", Context.MODE_PRIVATE).edit {
+                    putString("token", token)
+                }
+            } else {
+                message = response.message
             }
-        }else{
-            message = response.message
+            code.postValue(response.code)
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
-        code.postValue(response.code)
     }
 }

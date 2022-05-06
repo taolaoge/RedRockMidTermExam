@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.StarResponse
+import java.lang.Exception
 
 /**
  * description ： TODO:类的作用
@@ -18,14 +19,19 @@ class StarViewModel : ViewModel() {
     val code = MutableLiveData<Int>()
     var message = ""
     val shadeList = ArrayList<IntArray>()
+    val errorMsg = MutableLiveData<String>()
 
 
     suspend fun getStarList(page: Int, limit: Int) {
-        val response = DataNetwork.getStarList(
-            page, limit,
-            "bearer ${BaseApp.header.getString("token", "")}"
-        )
-        if (response.code == 114) dealStarListResponse(response) else message = response.message
+        try {
+            val response = DataNetwork.getStarList(
+                page, limit,
+                "bearer ${BaseApp.header.getString("token", "")}"
+            )
+            if (response.code == 114) dealStarListResponse(response) else message = response.message
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
+        }
     }
 
     private fun dealStarListResponse(response: StarResponse) {

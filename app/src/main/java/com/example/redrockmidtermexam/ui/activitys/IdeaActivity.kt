@@ -21,6 +21,9 @@ class IdeaActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityIdeaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
+        }
         viewModel.code.observe(this) {
             if (it != 114) this.toast(viewModel.message)
             else{

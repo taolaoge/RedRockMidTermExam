@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.redrockmidtermexam.R
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.response.ColorListResponse
+import java.lang.Exception
 
 
 /**
@@ -21,6 +22,7 @@ class ColorViewPagerAdapter(
     private val data: ArrayList<List<Color>>
 ) :
     RecyclerView.Adapter<ColorViewPagerAdapter.InnerHolder>() {
+    lateinit var layoutManager1: RecyclerView.LayoutManager
     lateinit var parent: ViewGroup
 
     inner class InnerHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -29,27 +31,30 @@ class ColorViewPagerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerHolder {
         this.parent = parent
+        layoutManager1 = LinearLayoutManager(parent.context)
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.color_vp2_item, parent, false)
         return InnerHolder(view)
     }
 
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
-        lateinit var layoutManager1: RecyclerView.LayoutManager
         lateinit var adapter1: ColorRecycleViewAdapter
-        layoutManager1 = LinearLayoutManager(parent.context)
-        val data = data[position]
-        val recycleViewData = ArrayList<Color>()
-        for(element in data){
-            val color = element.run {
-                Color(name,hex, r, g, b, c, m, k, y,id)
+        try {
+            val data = data[position]
+            val recycleViewData = ArrayList<Color>()
+            for (element in data) {
+                val color = element.run {
+                    Color(name, hex, r, g, b, c, m, k, y, id)
+                }
+                recycleViewData.add(color)
             }
-            recycleViewData.add(color)
-        }
-        adapter1 = ColorRecycleViewAdapter(recycleViewData)
-        holder.recycleView.run {
-            adapter = adapter1
-            layoutManager = layoutManager1
+            adapter1 = ColorRecycleViewAdapter(recycleViewData)
+            holder.recycleView.run {
+                adapter = adapter1
+                layoutManager = layoutManager1
+            }
+        }catch (e:Exception){
+
         }
     }
 

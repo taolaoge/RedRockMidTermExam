@@ -15,12 +15,17 @@ import com.example.redrockmidtermexam.model.network.DataNetwork
 class RegisterViewModel : ViewModel() {
     val code = MutableLiveData<Int>()
     var message = ""
+    val errorMsg = MutableLiveData<String>()
 
     suspend fun postRegister(phone_number:String,name:String){
-        val response = DataNetwork.postRegister(phone_number, name)
-        if (response.code != 114){
-            message = response.message
+        try {
+            val response = DataNetwork.postRegister(phone_number, name)
+            if (response.code != 114) {
+                message = response.message
+            }
+            code.postValue(response.code)
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
-        code.postValue(response.code)
     }
 }

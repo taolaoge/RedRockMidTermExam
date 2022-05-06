@@ -3,72 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_constrainedWidth="true"
+    app:layout_constraintEnd_toEndOf="parent">
 
     <ImageView
         android:id="@+id/image30"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintDimensionRatio="h,650:1152"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
+        app:layout_constraintVertical_chainStyle="spread"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
-        android:id="@+id/idea_detail_img1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/image30"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
-        android:id="@+id/idea_detail_img2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/idea_detail_img1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/idea_detail_img1"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_img1" />
-
-    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
-        android:id="@+id/idea_detail_img3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/idea_detail_img2"
-        app:layout_constraintStart_toStartOf="@+id/idea_detail_img2"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_img2" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="色卡"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image30"
-        app:layout_constraintVertical_bias="0.181" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/idea_detail_color2"
+        android:id="@+id/idea_detail_color4"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="132dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toStartOf="@+id/idea_detail_color5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color1">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,23 +36,75 @@
         android:id="@+id/idea_detail_color1"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/idea_detail_color2"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/idea_detail_color4"
         app:layout_constraintEnd_toStartOf="@+id/idea_detail_color2"
-        app:layout_constraintTop_toTopOf="@+id/idea_detail_color2"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.563">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="色卡"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/idea_detail_color1"
+        app:layout_constraintEnd_toEndOf="@+id/image30"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/image30"
+        app:layout_constraintTop_toBottomOf="@+id/image30" />
+
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
+        android:id="@+id/idea_detail_img1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/idea_detail_img2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
+        android:id="@+id/idea_detail_img2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/idea_detail_img3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_img1" />
+
+    <com.example.redrockmidtermexam.ui.view.LinearGradientCircleView
+        android:id="@+id/idea_detail_img3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_img2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idea_detail_color3"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/idea_detail_color2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/idea_detail_color2"
         app:layout_constraintTop_toTopOf="@+id/idea_detail_color2"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.53">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idea_detail_color2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/idea_detail_color1"
+        app:layout_constraintEnd_toStartOf="@+id/idea_detail_color3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/idea_detail_color1"
+        app:layout_constraintTop_toTopOf="@+id/idea_detail_color1">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,23 +112,12 @@
         android:id="@+id/idea_detail_color5"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/idea_detail_color2"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color2">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/idea_detail_color4"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/idea_detail_color1"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color1">
+        app:layout_constraintBottom_toBottomOf="@+id/idea_detail_color4"
+        app:layout_constraintEnd_toStartOf="@+id/idea_detail_color6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/idea_detail_color4"
+        app:layout_constraintTop_toTopOf="@+id/idea_detail_color4"
+        app:layout_constraintVertical_bias="0.651">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,11 +125,12 @@
         android:id="@+id/idea_detail_color6"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/idea_detail_color3"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color3">
+        app:layout_constraintBottom_toBottomOf="@+id/idea_detail_color5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/idea_detail_color5"
+        app:layout_constraintTop_toTopOf="@+id/idea_detail_color5"
+        app:layout_constraintVertical_bias="0.651">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,67 +138,59 @@
         android:id="@+id/idea_detail_tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/idea_detail_color4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color1"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color1"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color1" />
 
     <TextView
         android:id="@+id/idea_detail_tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color4"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color4"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color4" />
 
     <TextView
         android:id="@+id/idea_detail_tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/idea_detail_color5"
-        app:layout_constraintStart_toEndOf="@+id/idea_detail_tv1"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color2"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color2"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color2"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color2" />
 
     <TextView
         android:id="@+id/idea_detail_tv3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/idea_detail_color6"
-        app:layout_constraintStart_toEndOf="@+id/idea_detail_tv2"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color3"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color3"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color3" />
 
     <TextView
         android:id="@+id/idea_detail_tv5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idea_detail_tv4"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color5"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color5"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color5"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color5" />
 
     <TextView
         android:id="@+id/idea_detail_tv6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idea_detail_tv5"
-        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color6"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/idea_detail_color6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/idea_detail_color6"
+        app:layout_constraintTop_toBottomOf="@+id/idea_detail_color6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

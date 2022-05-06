@@ -9,6 +9,7 @@ import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
 import com.example.redrockmidtermexam.model.response.ColorListResponse
 import com.example.redrockmidtermexam.model.response.ColorPageResponse
+import java.lang.Exception
 
 /**
  * description ： TODO:类的作用
@@ -17,27 +18,22 @@ import com.example.redrockmidtermexam.model.response.ColorPageResponse
  * date : 2022/4/30
  */
 class ColorViewModel : ViewModel() {
-    val observeIfGet = ArrayList<Int>()
     val viewPagerData = ArrayList<List<Color>>()
     var message = ("")
     val code = MutableLiveData<Int>()
-
-    /*suspend fun getColorPageId() {
-        val response = DataNetwork.getColorPageId()
-        dealColorPageIdResponse(response)
-    }
-
-    private fun dealColorPageIdResponse(response: ColorPageResponse) {
-        val message = response.message
-    }*/
+    val errorMsg = MutableLiveData<String>()
 
     suspend fun getColorList(id: Int) {
-        val response = DataNetwork.getColorList(id)
-        message = response.message
-        if (response.code == 114) {
-            dealColorListResponse(response)
-        }else{
-            code.postValue(response.code)
+        try {
+            val response = DataNetwork.getColorList(id)
+            message = response.message
+            if (response.code == 114) {
+                dealColorListResponse(response)
+            } else {
+                code.postValue(response.code)
+            }
+        }catch (e:Exception){
+            errorMsg.postValue(e.toString())
         }
     }
 

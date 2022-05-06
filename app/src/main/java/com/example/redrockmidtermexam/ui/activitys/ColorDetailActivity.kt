@@ -27,6 +27,9 @@ class ColorDetailActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityColorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         id = intent.getIntExtra("id", 1)
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
+        }
         viewModel.code.observe(this) {
             if (it != 114) this.toast(viewModel.message) else initView()
         }

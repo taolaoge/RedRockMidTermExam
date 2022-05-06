@@ -20,7 +20,10 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.code.observe(this){
-            if (it == 114) finish() else this.toast(viewModel.message)
+            if (it == 114) finish() else this.toast(viewModel.message?:"")
+        }
+        viewModel.errorMsg.observe(this){
+            this.toast(it)
         }
         initClickView()
     }
