@@ -13,7 +13,7 @@ import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.ColorDetailGradientViewModel
 import kotlinx.coroutines.launch
 
-class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
+class ColorDetailGradientActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: ColorDetailGradientViewModel by viewModels()
     lateinit var binding: ActivityColorDetailGradientBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,14 +21,15 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
         binding = ActivityColorDetailGradientBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.colorDetailGradientStarFinish.visibility = View.GONE
-        viewModel.errorMsg.observe(this){
+        viewModel.errorMsg.observe(this) {
             this.toast(it)
         }
+        viewModel.shade_id = intent.getIntExtra("id", 1)
+        viewModel.position = intent.getIntExtra("position", 1)
         viewModel.code.observe(this) {
             if (it != 114) {
                 this.toast(viewModel.message)
-            }
-            else {
+            } else {
                 //请求到了数据后就立即重绘
                 if (viewModel.ifFresh) {
                     recreate()
@@ -44,13 +45,9 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
                 binding.colorDetailGradient.colorArray = colorArray
             }
         }
-        BaseApp.scope.launch {
             if (viewModel.ifFresh) {
-                viewModel.getColorDetail(
-                    intent.getIntExtra("id", 1), intent.getIntExtra("position", 1)
-                )
+                viewModel.getColorDetail()
             }
-        }
         initViewClick()
     }
 
@@ -60,7 +57,7 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when(v.id){
+        when (v.id) {
             R.id.color_detail_gradient_star -> starColor()
             R.id.color_detail_gradient_star_finish -> deleteStarColor()
         }
@@ -71,10 +68,7 @@ class ColorDetailGradientActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun starColor() {
-        val shadeId = intent.getIntExtra("shadeId",1)
-        BaseApp.scope.launch {
-            viewModel.postStarColor(shadeId)
-        }
+        viewModel.postStarColor()
         binding.colorDetailGradientStarFinish.visibility = View.VISIBLE
     }
 }

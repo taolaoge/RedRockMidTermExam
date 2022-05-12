@@ -25,7 +25,5 @@ class BaseApp : Application() {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
         val header: SharedPreferences by lazy { context.getSharedPreferences("header",Context.MODE_PRIVATE) }
-        private val job = Job()
-        val scope = CoroutineScope(job)
     }
 }

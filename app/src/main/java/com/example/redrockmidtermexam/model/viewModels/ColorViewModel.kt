@@ -1,15 +1,13 @@
 package com.example.redrockmidtermexam.model.viewModels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.redrockmidtermexam.BaseApp
-import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.bean.Color
-import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
 import com.example.redrockmidtermexam.model.response.ColorListResponse
-import com.example.redrockmidtermexam.model.response.ColorPageResponse
-import java.lang.Exception
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlin.collections.ArrayList
 
 /**
  * description ： TODO:类的作用
@@ -22,26 +20,26 @@ class ColorViewModel : ViewModel() {
     var message = ("")
     val code = MutableLiveData<Int>()
     val errorMsg = MutableLiveData<String>()
+    val id = MutableLiveData(1)
 
-    suspend fun getColorList(id: Int) {
+    fun getColorList() {
         try {
-            val response = DataNetwork.getColorList(id)
-            message = response.message
-            if (response.code == 114) {
-                dealColorListResponse(response)
-            } else {
-                code.postValue(response.code)
-            }
-        }catch (e:Exception){
-            errorMsg.postValue(e.toString())
-        }
+            NetWorkRepository.getColorList(id.value!!)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    dealColorListResponse(it)
+                }
+        }catch (t:Exception){}
     }
 
-    private fun dealColorListResponse(response:ColorListResponse) {
+    private fun dealColorListResponse(response: ColorListResponse) {
         val arrayList = ArrayList<Color>()
-        for(i in response.data.color_list){
-            arrayList.add(i)
+        for (color in response.data.color_list) {
+            arrayList.add(color)
         }
         viewPagerData.add(arrayList)
+        if (id.value!! < 7)
+//            id.postValue(id.value!!.plus(1))
+            id.value = id.value!!.plus(1)
     }
 }

@@ -25,19 +25,16 @@ class IdeaDetailActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.errorMsg.observe(this){
             this.toast(it)
         }
-        viewModel.code.observe(this) {
-            this.toast(viewModel.message)
-        }
         viewModel.isFinish.observe(this) {
             if (it) {
                 initAdapter()
             }
         }
-        BaseApp.scope.launch {
-            repeat(7) {
-                viewModel.getIdeaDetail(it + 1)
-            }
+
+        viewModel.id.observe(this){
+            viewModel.getIdeaDetail()
         }
+
         //取消vp2滑动到底滑不动时的动画
         val child: View = binding.ideaDetailVp2.getChildAt(0)
         if (child is RecyclerView) {

@@ -24,9 +24,8 @@ class IdeaActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.errorMsg.observe(this){
             this.toast(it)
         }
-        viewModel.code.observe(this) {
-            if (it != 114) this.toast(viewModel.message)
-            else{
+        viewModel.ifFinish.observe(this) {
+            if (it){
                 for (i in 0 until viewModel.imageList.size) {
                     when (i) {
                         0 -> Glide.with(this).load(viewModel.imageList[0].filter())
@@ -41,9 +40,7 @@ class IdeaActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-        BaseApp.scope.launch {
-            viewModel.getIdeaFirst()
-        }
+        viewModel.getIdeaFirst()
         initClickView()
     }
 

@@ -2,9 +2,11 @@ package com.example.redrockmidtermexam.model.network
 
 import com.example.wanandroid_mvvm.model.network.NetService
 import com.example.wanandroid_mvvm.utils.ServiceCreator
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -31,14 +33,14 @@ object DataNetwork {
 
     suspend fun postLogin(phone_number: String) = netService.postLogin(phone_number).await()
 
-    suspend fun postRegister(phone_number: String, name: String)
-    = netService.postRegister(phone_number, name).await()
+    suspend fun postRegister(phone_number: String, name: String) =
+        netService.postRegister(phone_number, name).await()
 
-    suspend fun getStarList(page:Int,limit:Int,token:String)
-    = netService.getStarList(page, limit, token).await()
+    suspend fun getStarList(page: Int, limit: Int, token: String) =
+        netService.getStarList(page, limit, token).await()
 
-    suspend fun postStarColor(shade_id:Int,name:String,token:String)
-    = netService.postStarColor(shade_id, name, token).await()
+    suspend fun postStarColor(shade_id: Int, name: String, token: String) =
+        netService.postStarColor(shade_id, name, token).await()
 
     private suspend fun <T> retrofit2.Call<T>.await(): T {
         return suspendCoroutine {

@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  * description ： TODO:类的作用
@@ -17,13 +20,15 @@ class RegisterViewModel : ViewModel() {
     var message = ""
     val errorMsg = MutableLiveData<String>()
 
-    suspend fun postRegister(phone_number:String,name:String){
+    fun postRegister(phone_number:String,name:String){
         try {
-            val response = DataNetwork.postRegister(phone_number, name)
-            if (response.code != 114) {
-                message = response.message
-            }
-            code.postValue(response.code)
+            NetWorkRepository.postRegister(phone_number, name)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    message = it.message
+                    code.value = it.code
+                }
+
         }catch (e:Exception){
             errorMsg.postValue(e.toString())
         }

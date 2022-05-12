@@ -23,18 +23,15 @@ class StarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStarBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.errorMsg.observe(this){
+        viewModel.errorMsg.observe(this) {
             this.toast(it)
         }
-        viewModel.code.observe(this){
-            if (it != 114) this.toast(viewModel.message)
-            else{
-             initRecycleView()
+        viewModel.code.observe(this) {
+            if (it == 114) {
+                initRecycleView()
             }
         }
-        BaseApp.scope.launch {
-            viewModel.getStarList(1,100)
-        }
+        viewModel.getStarList()
         binding.starToolbarVector.setOnClickListener {
             finish()
         }

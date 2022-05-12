@@ -21,18 +21,16 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityColorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.errorMsg.observe(this){
+        viewModel.errorMsg.observe(this) {
             this.toast(it)
         }
         viewModel.code.observe(this) {
             this.toast(viewModel.message)
         }
-        BaseApp.scope.launch {
-            //直接将所有的信息请求到先
-            repeat(7) {
-                viewModel.getColorList(it + 1)
-            }
-            initViewPager()
+        viewModel.id.observe(this){
+            viewModel.getColorList()
+            if (it == 7)
+                initViewPager()
         }
         initClickView()
 
@@ -43,7 +41,7 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         binding.colorVp2.registerOnPageChangeCallback(object :
-        ViewPager2.OnPageChangeCallback(){
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 //首先隐藏全部的选中的黑色的圆点
                 hideCircle()
@@ -63,7 +61,7 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    fun hideCircle(){
+    fun hideCircle() {
         binding.run {
             colorVpSelect1.visibility = View.INVISIBLE
             colorVpSelect2.visibility = View.INVISIBLE
@@ -76,11 +74,8 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initViewPager() {
-        runOnUiThread {
-            binding.colorVp2.adapter = ColorViewPagerAdapter(7, viewModel.viewPagerData)
-        }
+        binding.colorVp2.adapter = ColorViewPagerAdapter(7, viewModel.viewPagerData)
     }
-
 
     private fun initClickView() {
         binding.colorToolbarTitle.setOnClickListener(this)

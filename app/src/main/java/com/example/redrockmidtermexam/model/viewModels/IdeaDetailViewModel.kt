@@ -5,7 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
 import com.example.redrockmidtermexam.model.response.IdeaDetailResponse
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.lang.Exception
 
 /**
@@ -19,24 +23,29 @@ class IdeaDetailViewModel : ViewModel() {
     val responseList = ArrayList<IdeaDetailResponse>()
     val isFinish = MutableLiveData(false)
     var message = ("")
-    val code = MutableLiveData<Int>()
     val errorMsg = MutableLiveData<String>()
+    val id = MutableLiveData(1)
 
-    suspend fun getIdeaDetail(id: Int) {
+    fun getIdeaDetail() {
         try {
-            val response = DataNetwork.getIdeaDetail(id)
-            if (response.code == 114) {
-                responseList.add(response)
-                titleList.add(response.data.title)
-                if (id == 7) {
-                    isFinish.postValue(true)
+            NetWorkRepository.getIdeaDetail(id.value!!)
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMap {
+                    Observable.create<IdeaDetailResponse> { b ->
+                        if (it.code == 114)
+                            b.onNext(it)
+                    }
                 }
-            } else {
-                code.postValue(response.code)
-                message = response.message
-            }
-        }catch (e:Exception){
-            errorMsg.postValue(e.toString())
+                .subscribe {
+                    responseList.add(it)
+                    titleList.add(it.data.title)
+                    if (id.value!! < 7)
+                        id.value = id.value!!.plus(1)
+                    else
+                        isFinish.value = true
+                }
+        } catch (e: Exception) {
+            errorMsg.value = e.toString()
         }
     }
 }

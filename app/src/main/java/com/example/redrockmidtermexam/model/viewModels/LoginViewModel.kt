@@ -6,6 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
+import com.example.redrockmidtermexam.model.response.LoginResponse
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  * description ： TODO:类的作用
@@ -18,19 +23,23 @@ class LoginViewModel : ViewModel() {
     var message = ""
     val errorMsg = MutableLiveData<String>()
 
-    suspend fun postLogin(phone_number:String) {
+    fun postLogin(phone_number:String) {
         try {
-            val response = DataNetwork.postLogin(phone_number)
-            if (response.code == 114) {
-                val token = response.data.token
-                //首先创造一个名为"header"的sp文件，必须要先创建
-                BaseApp.context.getSharedPreferences("header", Context.MODE_PRIVATE).edit {
-                    putString("token", token)
+            NetWorkRepository.postLogin(phone_number)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    message = if (it.code == 114){
+                        val token = it.data.token
+                        //首先创造一个名为"header"的sp文件，必须要先创建
+                        BaseApp.context.getSharedPreferences("header", Context.MODE_PRIVATE).edit {
+                            putString("token", token)
+                        }
+                        "登录成功"
+                    }else{
+                        it.message
+                    }
+                    code.value = it.code
                 }
-            } else {
-                message = response.message
-            }
-            code.postValue(response.code)
         }catch (e:Exception){
             errorMsg.postValue(e.toString())
         }

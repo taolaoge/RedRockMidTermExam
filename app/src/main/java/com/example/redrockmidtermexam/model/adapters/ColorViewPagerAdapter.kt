@@ -22,7 +22,6 @@ class ColorViewPagerAdapter(
     private val data: ArrayList<List<Color>>
 ) :
     RecyclerView.Adapter<ColorViewPagerAdapter.InnerHolder>() {
-    lateinit var layoutManager1: RecyclerView.LayoutManager
     lateinit var parent: ViewGroup
 
     inner class InnerHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -31,13 +30,14 @@ class ColorViewPagerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerHolder {
         this.parent = parent
-        layoutManager1 = LinearLayoutManager(parent.context)
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.color_vp2_item, parent, false)
         return InnerHolder(view)
     }
 
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
+        lateinit var layoutManager1: RecyclerView.LayoutManager
         lateinit var adapter1: ColorRecycleViewAdapter
         try {
             val data = data[position]
@@ -48,14 +48,13 @@ class ColorViewPagerAdapter(
                 }
                 recycleViewData.add(color)
             }
+            layoutManager1 = LinearLayoutManager(parent.context)
             adapter1 = ColorRecycleViewAdapter(recycleViewData)
             holder.recycleView.run {
                 adapter = adapter1
                 layoutManager = layoutManager1
             }
-        }catch (e:Exception){
-
-        }
+        }catch (e:Exception){ }
     }
 
     override fun getItemCount(): Int = count

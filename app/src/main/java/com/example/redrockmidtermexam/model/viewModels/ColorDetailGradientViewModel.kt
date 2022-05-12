@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
 import com.example.redrockmidtermexam.model.response.ColorDetailResponse
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 /**
  * description ： TODO:类的作用
@@ -20,32 +22,47 @@ class ColorDetailGradientViewModel : ViewModel() {
     val colorList = ArrayList<Color>()
     var ifFresh = true
     val errorMsg = MutableLiveData<String>()
+    var shade_id = 1
+    var position = 1
 
-    suspend fun postStarColor(shade_id:Int) {
+    fun postStarColor() {
         try {
-            val response = DataNetwork.postStarColor(
+            /*val response = DataNetwork.postStarColor(
+                shade_id, "颜色",
+                "bearer ${BaseApp.header.getString("token", "")}"
+            )*/
+            NetWorkRepository.postStarColor(
                 shade_id, "颜色",
                 "bearer ${BaseApp.header.getString("token", "")}"
             )
-        }catch (e:Exception){
+                .subscribe {
+
+                }
+        } catch (e: Exception) {
             errorMsg.postValue(e.toString())
         }
     }
 
-    suspend fun getColorDetail(id:Int,position:Int){
+    fun getColorDetail() {
         try {
-            val response = DataNetwork.getColorDetail(id)
+            /*val response = DataNetwork.getColorDetail(id)
             if (response.code == 114) {
                 dealColorDetailResponse(response, position)
             }
-            code.postValue(response.code)
-        }catch (e:Exception){
+            code.postValue(response.code)*/
+            NetWorkRepository.getColorDetail(shade_id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    if (it.code == 114) dealColorDetailResponse(it, position)
+                    code.value = it.code
+                }
+        } catch (e: Exception) {
             errorMsg.postValue(e.toString())
         }
     }
 
-    private fun dealColorDetailResponse(response:ColorDetailResponse,position:Int) {
-        for (color in response.data.shades.shade_list[position].shade){
+    private fun dealColorDetailResponse(response: ColorDetailResponse, position: Int) {
+        for (color in response.data.shades.shade_list[position].shade) {
             colorList.add(color.color)
         }
     }

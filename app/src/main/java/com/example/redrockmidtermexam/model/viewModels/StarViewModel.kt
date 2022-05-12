@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.BaseApp
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
 import com.example.redrockmidtermexam.model.response.StarResponse
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import java.lang.Exception
 
 /**
@@ -20,15 +22,19 @@ class StarViewModel : ViewModel() {
     var message = ""
     val shadeList = ArrayList<IntArray>()
     val errorMsg = MutableLiveData<String>()
+    var page = 1
+    var limit = 100
 
-
-    suspend fun getStarList(page: Int, limit: Int) {
+    fun getStarList() {
         try {
-            val response = DataNetwork.getStarList(
-                page, limit,
-                "bearer ${BaseApp.header.getString("token", "")}"
-            )
-            if (response.code == 114) dealStarListResponse(response) else message = response.message
+            NetWorkRepository.getStarList(page,limit
+            ,"bearer ${BaseApp.header.getString("token","")}" )
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    Log.d("bbp", "getStarList:$it")
+                    if (it.code == 114) dealStarListResponse(it) else message = it.message
+                    code.value = it.code
+                }
         }catch (e:Exception){
             errorMsg.postValue(e.toString())
         }
@@ -43,6 +49,5 @@ class StarViewModel : ViewModel() {
             }
             shadeList.add(shadeArray)
         }
-        code.postValue(response.code)
     }
 }

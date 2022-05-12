@@ -19,19 +19,20 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.errorMsg.observe(this){
+        viewModel.errorMsg.observe(this) {
             this.toast(it)
         }
-        viewModel.code.observe(this){
-            if (it == 114) finish() else  this.toast(viewModel.message)
+        viewModel.code.observe(this) {
+            if (it == 114) {
+                BaseApp.context.toast(viewModel.message)
+                finish()
+            } else this.toast(viewModel.message)
         }
         binding.registerBtnRegister.setOnClickListener {
-             BaseApp.scope.launch {
-                 viewModel.postRegister(
-                     binding.registerEdPhoneNumber.text.toString(),
-                     binding.registerEdName.text.toString()
-                 )
-             }
+            viewModel.postRegister(
+                binding.registerEdPhoneNumber.text.toString(),
+                binding.registerEdName.text.toString()
+            )
         }
     }
 }

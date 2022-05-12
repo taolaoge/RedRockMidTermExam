@@ -12,17 +12,20 @@ import com.example.redrockmidtermexam.extentions.toast
 import com.example.redrockmidtermexam.model.viewModels.LoginViewModel
 import kotlinx.coroutines.launch
 
-class LoginActivity : AppCompatActivity(),View.OnClickListener {
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: LoginViewModel by viewModels()
     lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.code.observe(this){
-            if (it == 114) finish() else this.toast(viewModel.message?:"")
+        viewModel.code.observe(this) {
+            if (it == 114){
+                BaseApp.context.toast(viewModel.message)
+                finish()
+            }else this.toast(viewModel.message)
         }
-        viewModel.errorMsg.observe(this){
+        viewModel.errorMsg.observe(this) {
             this.toast(it)
         }
         initClickView()
@@ -35,10 +38,10 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when(v.id){
+        when (v.id) {
             R.id.login_toolbar -> finish()
             R.id.login_btn_login -> login()
-            R.id.login_tv_go_register ->toRegister()
+            R.id.login_tv_go_register -> toRegister()
         }
     }
 
@@ -47,8 +50,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun login() {
-        BaseApp.scope.launch {
-            viewModel.postLogin(binding.loginEdPhoneNumber.text.toString())
-        }
+        viewModel.postLogin(binding.loginEdPhoneNumber.text.toString())
     }
 }

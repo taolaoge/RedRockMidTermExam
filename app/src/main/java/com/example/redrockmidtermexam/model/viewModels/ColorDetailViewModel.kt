@@ -4,8 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.redrockmidtermexam.model.bean.Color
 import com.example.redrockmidtermexam.model.network.DataNetwork
+import com.example.redrockmidtermexam.model.network.NetWorkRepository
 import com.example.redrockmidtermexam.model.response.ColorDetailResponse
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.lang.Exception
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * description ： TODO:类的作用
@@ -13,7 +20,7 @@ import java.lang.Exception
  * email : 1678921845@qq.com
  * date : 2022/4/30
  */
-class ColorDetailViewModel :ViewModel() {
+class ColorDetailViewModel : ViewModel() {
     var shadeIdList = ArrayList<Int>()
     var ifRefresh = true
     val colorsData = ArrayList<Color>()
@@ -21,20 +28,23 @@ class ColorDetailViewModel :ViewModel() {
     var message = ("")
     val code = MutableLiveData<Int>()
     val errorMsg = MutableLiveData<String>()
+    var id = 1
 
-    suspend fun getColorDetail(id:Int) {
+    fun getColorDetail() {
         try {
-            val response = DataNetwork.getColorDetail(id)
-            if (response.code == 114) {
-                dealColorDetailResponse(response)
-            }
-            code.postValue(response.code)
-        }catch (e:Exception){
+                NetWorkRepository.getColorDetail(id)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        dealColorDetailResponse(it)
+                        code.value = it.code
+                    }
+
+        } catch (e: Exception) {
             errorMsg.postValue(e.toString())
         }
     }
 
-    private fun dealColorDetailResponse(response:ColorDetailResponse) {
+    private fun dealColorDetailResponse(response: ColorDetailResponse) {
         colorsData.run {
             add(response.data.colors.color_1)
             add(response.data.colors.color_2)
@@ -44,9 +54,9 @@ class ColorDetailViewModel :ViewModel() {
             add(response.data.colors.color_6)
             add(response.data.colors.color_7)
         }
-        for(i in 0..5){
+        for (i in 0..5) {
             val arrayList = ArrayList<Color>()
-            for (j in response.data.shades.shade_list[i].shade){
+            for (j in response.data.shades.shade_list[i].shade) {
                 j.color.run {
                     val color = Color(name, hex, r, g, b, c, m, k, y, id)
                     arrayList.add(color)
